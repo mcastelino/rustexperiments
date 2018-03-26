@@ -44,6 +44,13 @@ fn main() {
         println!("This shape {:?} has an area of {}", shape, shape.area());
     }
 
+    fn print_area_c<T>(shape: T)
+    where
+        T: HasArea + std::fmt::Debug,
+    {
+        println!("This shape {:?} has an area of {}", shape, shape.area());
+    }
+
     let c = Circle::new();
     let s = Square::new();
 
