@@ -1,5 +1,6 @@
 fn main() {
     trait HasArea {
+        fn new() -> Self;
         fn area(&self) -> f64;
     }
 
@@ -11,6 +12,14 @@ fn main() {
     }
 
     impl HasArea for Circle {
+        fn new() -> Circle {
+            Circle {
+                x: 0f64,
+                y: 0f64,
+                radius: 10f64,
+            }
+        }
+
         fn area(&self) -> f64 {
             std::f64::consts::PI * (self.radius * self.radius)
         }
@@ -23,6 +32,9 @@ fn main() {
     }
 
     impl HasArea for Square {
+        fn new() -> Square {
+            Square { x: 10f64, y: 10f64 }
+        }
         fn area(&self) -> f64 {
             self.x * self.y
         }
@@ -32,13 +44,8 @@ fn main() {
         println!("This shape {:?} has an area of {}", shape, shape.area());
     }
 
-    let c = Circle {
-        x: 0.0,
-        y: 0.0,
-        radius: 100.0,
-    };
-
-    let s = Square { x: 10.0, y: 20.0 };
+    let c = Circle::new();
+    let s = Square::new();
 
     print_area(c);
     print_area(s);
