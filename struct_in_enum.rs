@@ -8,6 +8,7 @@ enum Message {
     Value(i32),
     Point(i32, i32, i32),
     EPointer(Pointer),
+    Pointer { x: i32, y: i32 },
 }
 
 fn process_message(msg: Message) {
@@ -16,6 +17,7 @@ fn process_message(msg: Message) {
         Message::Value(r) => println!("Value: {}\n", r),
         Message::Point(x, ..) => println!("Point {}\n", x),
         Message::EPointer(p) => println!("Pointer {}\n", p.x),
+        Message::Pointer { x: x, y: y } => println!("Pointer {}, {}\n", x, y),
     };
 }
 
@@ -28,9 +30,12 @@ fn main() {
         y: 44,
         z: 55,
     });
+    let msg5 = Message::Pointer { x: 33, y: 44 };
 
     process_message(msg1);
     process_message(msg2);
     process_message(msg3);
     process_message(msg4);
+    process_message(msg5);
 }
+
