@@ -1,6 +1,6 @@
 use List::*;
 
-enum List<T: std::ops::Add + std::fmt::Display> {
+enum List<T> {
     // Cons: Tuple struct that wraps an element and a pointer to the next node
     Cons(T, Box<List<T>>),
     // Nil: A node that signifies the end of the linked list
