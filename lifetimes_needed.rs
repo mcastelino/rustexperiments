@@ -1,3 +1,6 @@
+// This example illustrates why lifetimes are needed
+// when the compiler cannot (or will not) elide them
+
 fn foo<'a>(x: &'a u32, _y: &'a u32) -> &'a u32 {
     x
 }
